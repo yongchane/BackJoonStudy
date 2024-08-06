@@ -1,0 +1,53 @@
+(수정 전)
+arr=[ ]
+m=int(input())
+n=int(input())
+for i in range(1,m):
+    a=int(input())
+    b=int(input())
+    if a<=b is not arr:
+        rever=list(reversed(arr))
+
+print(arr)
+1.두 숫자를 띄어서 받는 방법을 모르겠음, 첫번째 줄의 m에서 m까지 출력하는 방법을 모르겠음, 해당 구간의 순서를 바꾸는 법을 모르겠음
+
+알고리즘:
+1. 바구니 수(n),반복횟수(m)을 입력 받음
+2. 해당 바구니 수 까지 리스트 만들기
+3. 바꿀 i,j 구간을 입력 받을 for 구문을 형성
+4. for 구문 안에 뒤집을 알고리즘 형성
+5. 출력
+-------------------------------------------------------------------
+(수정 후)
+n,m = map(int, input().split()) #첫번째 줄의 m에서 m까지 출력하는 방법
+basket = [i for i in range(1,n+1)]
+temp = 0
+
+for x in range(m): #해당 구간의 순서를 바꾸는 법
+  i,j = map(int, input().split())
+  temp = basket[i-1:j]
+  temp.reverse()
+  basket[i-1:j] = temp
+
+for x in range(n):
+  print(basket[x],end=" ") #두 숫자를 띄어서
+
+
+
+코드 설명
+  temp = basket[i-1:j]
+  temp.reverse()
+  basket[i-1:j] = temp
+
+1.	temp = basket[i-1:j]:
+	•	basket 리스트의 i-1부터 j-1까지의 부분 리스트를 복사하여 temp에 저장합니다. 이때 basket[i-1:j]은 i-1부터 j-1까지의 슬라이스를 가져옵니다.
+	•	예를 들어, basket = [1, 2, 3, 4, 5]이고 i=2, j=4이면 temp = [2, 3, 4]가 됩니다.
+
+2.	temp.reverse():
+	•	temp 리스트의 순서를 역순으로 뒤집습니다.
+	•	이전 예에서, temp가 [2, 3, 4]였다면 temp.reverse() 이후 temp = [4, 3, 2]가 됩니다.
+
+3.	basket[i-1:j] = temp:
+	•	basket 리스트의 i-1부터 j-1까지의 원소를 temp로 대체합니다.
+	•	이 작업은 basket의 해당 부분을 temp의 값으로 덮어씌우는 역할을 합니다.
+	•	이전 예에서, basket[i-1:j]은 [2, 3, 4] 부분이고, 이 부분이 temp의 값인 [4, 3, 2]로 바뀝니다. 따라서 최종적으로 basket = [1, 4, 3, 2, 5]가 됩니다.
