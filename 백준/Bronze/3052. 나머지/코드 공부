@@ -1,0 +1,17 @@
+수정 전 코드
+ for _ in range(10):
+     num=int(input())
+     re=num/42
+    
+알고리즘: 
+빈배열을 만들어 거기다가 나누는 값이 다를때 마다 배열에 값을 추가(append) 그 후 그 배열 값을 출력
+------------------------------------------------
+수정 후 코드
+arr=[]
+
+for i in range(10):
+    a=int(input())
+    if a%42 not in arr:
+        arr.append(a%42)
+
+print(len(arr))  
